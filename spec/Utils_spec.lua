@@ -167,7 +167,7 @@ describe("Utils", function()
 
     describe("shouldNeverImport", function()
         describe("Never import", declareTestCases(
-            { "gif", "XMP", "MyLiObAk" },
+            { "gif", "XmL", "XMP", "MyLiObAk" },
             function(extension)
                 assert.True(Utils.shouldNeverImport(extension))
             end

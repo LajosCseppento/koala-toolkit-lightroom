@@ -90,7 +90,7 @@ end
 -- @treturn bool true if the file should never be imported
 function Utils.shouldNeverImport(extension)
     local ext = extension:lower()
-    if ext == "gif" or ext == "xmp" then
+    if ext == "gif" or ext == "xml" or ext == "xmp" then
         return true
     elseif ext:sub(1, 5) == "mylio" then
         return true

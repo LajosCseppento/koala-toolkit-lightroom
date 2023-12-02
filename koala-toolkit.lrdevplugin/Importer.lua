@@ -180,7 +180,7 @@ local function collectPathsToImport(importablePaths, lrCatalog, lrProgressScope)
     end
 
     -- Fetch photos with paths
-    Logger.infof("Analyisng catalog ...")
+    Logger.infof("Analyising catalog ...")
     lrProgressScope:setCaption("Analysing catalog ...")
     LrTasks.yield()
 
@@ -295,6 +295,8 @@ local function smartImport(lrCatalog, lrProgressScope)
 
     lrProgressScope:setPortionComplete(0, pathsToImportCount)
     LrTasks.yield()
+    local successCount = 0
+    local failedCount = 0
 
     for i, path in ipairs(pathsToImport) do
         Logger.infof("Importing %s (%d/%d)", path, i, pathsToImportCount)
@@ -307,6 +309,8 @@ local function smartImport(lrCatalog, lrProgressScope)
         end)
 
         if success then
+            successCount = successCount + 1
+
             -- Always add immediately in case the user cancels later
             lrImportCollection:addPhotos({ lrPhoto })
 
@@ -318,17 +322,28 @@ local function smartImport(lrCatalog, lrProgressScope)
                 end)
             end
         else
+            failedCount = failedCount + 1
             Logger.warnf("Failed to import %s: %s", path, lrPhoto)
         end
 
         lrProgressScope:setPortionComplete(i, pathsToImportCount)
         LrTasks.yield()
         if lrProgressScope:isCanceled() then
-            local msg = string.format("Operation canceled (%d/%d).", i, pathsToImportCount)
+            local msg = string.format("Operation canceled (%d/%d)", i, pathsToImportCount)
             Logger.infof(msg)
             LrDialogs.message("Smart Import", msg, "info");
             return
         end
+    end
+
+    if not lrProgressScope:isCanceled() then
+        local msg = string.format("Imported %d files", successCount)
+        if failedCount > 0 then
+            msg = msg .. string.format("  (could not import %d unsupported files)", failedCount)
+        end
+
+        Logger.info(msg)
+        LrDialogs.message("Smart Import", msg, "info");
     end
 
     lrCatalog:setActiveSources({ lrImportCollection })
