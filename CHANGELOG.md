@@ -15,5 +15,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Smart import
 - Build all smart previews
 
-[Unreleased]: https://github.com/LajosCseppento/ruthless/compare/v1.0.0.0...HEAD
-[1.0.0.0]: https://github.com/LajosCseppento/ruthless/releases/tag/v1.0.0.0
+[Unreleased]: https://github.com/LajosCseppento/koala-toolkit-lightroom/compare/v1.0.0.0...HEAD
+[1.0.0.0]: https://github.com/LajosCseppento/koala-toolkit-lightroom/releases/tag/v1.0.0.0
