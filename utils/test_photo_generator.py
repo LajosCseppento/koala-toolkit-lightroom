@@ -1,4 +1,4 @@
-"""Test photo generator"""
+"""Test photo generator."""
 import os
 import shutil
 

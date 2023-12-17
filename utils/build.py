@@ -75,7 +75,7 @@ def finalise_logger_configuration(logger_lua: str):
 def build():
     """Builds the plugin package."""
 
-    print("Building plugin package ...")
+    print("Building plugin package...")
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     plugin_dir = os.path.abspath(

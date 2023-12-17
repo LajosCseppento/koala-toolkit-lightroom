@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "utils"
 version = "0.0.0"
-description = "Koala Toolkit for Lightroom Classic utilities"
+description = "Utilities for koala-toolkit-lightroom"
 authors = ["Lajos Cseppentő <1053931+LajosCseppento@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
