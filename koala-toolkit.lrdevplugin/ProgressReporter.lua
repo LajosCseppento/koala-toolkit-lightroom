@@ -1,9 +1,9 @@
 local LrTasks = import "LrTasks"
 
 local ProgressReporter = {
-    -- Do not yield or do anything, otherwise LRC will get really slow.
+    -- Do not update the UI too frequently, otherwise LRC would get really slow.
     minimumReportIntervalSeconds = 1,
-    -- Do not check the elapsed time too often
+    -- Do not check the elapsed time too often.
     minimumReportProgressChange = 100,
     -- Will only report if both the interval and progress change are met.
 }
@@ -11,6 +11,7 @@ local ProgressReporter = {
 --- Creates a new ProgressReporter.
 --
 -- Call reportProgress() to report progress if the minimum time and minimum progress elapsed.
+-- Call forceReportProgress() to report progress immediately.
 -- Use ProgressReporter to avoid calling LrTasks.yield() and LrProgressScope methods too often.
 --
 -- @tparam LrProgressScope lrProgressScope
