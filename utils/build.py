@@ -11,7 +11,6 @@ def extract_version(plugin_dir: str) -> str:
     Args:
         plugin_dir (str): Path to plugin directory
     """
-
     lua_code = """
     -- Placeholder for a Lightroom SDK function.
     function LOC(param)
@@ -26,7 +25,6 @@ def extract_version(plugin_dir: str) -> str:
         info.VERSION.build
     )
     """
-
     extractor_script = os.path.join(plugin_dir, "_ExtractVersion.tmp.lua")
     with open(
         os.path.join(plugin_dir, extractor_script), "w", encoding="utf-8"
@@ -74,9 +72,7 @@ def finalise_logger_configuration(logger_lua: str):
 
 def build():
     """Builds the plugin package."""
-
     print("Building plugin package...")
-
     script_dir = os.path.dirname(os.path.abspath(__file__))
     plugin_dir = os.path.abspath(
         os.path.join(script_dir, "..", "koala-toolkit.lrdevplugin")
@@ -101,7 +97,6 @@ def build():
     logger_lua = os.path.join(build_tmp_plugin_dir, "Logger.lua")
     finalise_logger_configuration(logger_lua)
 
-    # Zip directory
     print(f"Zipping plugin to {build_dir} ...")
     target_base_name = os.path.join(build_dir, f"koala-toolkit-{version}")
     target = shutil.make_archive(target_base_name, "zip", build_tmp_dir)
