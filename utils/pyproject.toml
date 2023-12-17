@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "utils"
+version = "0.0.0"
+description = "Utilities for koala-toolkit-lightroom"
+authors = ["Lajos Cseppentő <1053931+LajosCseppento@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pillow = "^10.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+flake8 = "^6.1.0"
+mypy = "^1.7.1"
+pylint = "^3.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
