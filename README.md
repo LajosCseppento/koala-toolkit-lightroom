@@ -6,8 +6,8 @@ Lightroom Classic utilities to better manage (not only koala) photos.
 
 ## Installation
 
-1. Download the ZIP
-2. Unzip
+1. Download the package
+2. Unpack the package
 3. Open Lightroom Classic -> File -> Plug-in Manager
 4. Click "Add" and select the unpacked folder `koala-toolkit.lrplugin`
 
@@ -15,11 +15,11 @@ Lightroom Classic utilities to better manage (not only koala) photos.
 
 The Smart Import functionality is designed to help you import photos into Lightroom without importing duplicates such as `*_display.jpg`.
 
-You probably only want to use Smart Import if you have problems with Lightroom's standard import dialog. Smart import imports all images from all library folders. It excludes trivial duplicates such as JPEG sidecar files. However, if you do not build smart previews it is slower than Lightroom's standard import dialog.
+You probably only want to use Smart Import if you have problems with Lightroom's standard import dialog. Smart Import imports all images from all library folders. It excludes only trivial duplicates such as JPEG sidecar files. However, if you do not build smart previews it is slower than Lightroom's standard import dialog.
 
-Note that Smart Import does not remove photos from your catalog that were removed from disk. You need to use the Synchronize feature of Lightroom Classic for this.
+Note that Smart Import does not remove photos from your catalog that were removed from disk. You need to use the Synchronize feature of Lightroom Classic for that.
 
-So this is far from perfect, but fits very well in my workflow. Let me know if you have any suggestions.
+This is far from perfect, but fits very well in my workflow. Let me know if you have any suggestions.
 
 ## Build All Smart Previews
 
@@ -31,7 +31,7 @@ This plugin uses the Adobe Lightroom SDK, which has some limitations.
 
 Plugins can only import photos into one by one, which is slow. The other option would be to trigger LRC to open the import dialog or re-run a previous import, but this would import `*_display.jpg` files (which are exported previews used by other applications such as Mylio).
 
-However, when also building smart previews on my computer it took the same time as the standard import dialog (but note that Smart Import blocks your UI, so you cannot organise and edit while importing).
+However, when building smart previews during the import on my computer it took the same time as the standard import dialog (but note that Smart Import blocks your UI, so you cannot organise and edit while importing).
 
 Plugins also cannot remove photos from the catalog.
 
