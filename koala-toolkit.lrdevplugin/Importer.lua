@@ -74,6 +74,7 @@ local function collectBaseFilePathsToExtensions(folderPath, lrProgressScope)
             return {}
         end
     end
+    progressReporter:forceReportProgress()
 
     return baseFilePathsToExtensions
 end
@@ -136,6 +137,7 @@ local function collectImportableFilePaths(baseFilePathsToExtensions, folderPath,
             return {}
         end
     end
+    progressReporter:forceReportProgress()
 
     return importablePaths
 end
@@ -202,6 +204,7 @@ local function collectPathsToImport(importablePaths, lrCatalog, lrProgressScope)
             return {}
         end
     end
+    progressReporter:forceReportProgress()
 
     -- Match against importable paths
     local pathsToImport = {}

@@ -43,6 +43,13 @@ Windows development environment with [Scoop](https://scoop.sh/):
 scoop install lua luarocks mingw
 ```
 
+To generate test photos, run:
+
+```shell
+cd utils
+poetry run test_photo_generator.py
+```
+
 ### Debugging
 
 For debugging I used [WinDbg](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/).
@@ -65,8 +72,15 @@ Tu run tests call:
 busted -v
 ```
 
-### Release
+### Release Procedure
 
-- Publish as `koala-toolkit.lrplugin` (instead of `koala-toolkit.lrdevplugin`)
-- In `Logger` disable trace and debug logging, set default target to `nil``
-- After release bump the version in `Info.lua``
+1. Fix version, finalise change log
+2. Build the plugin package:
+
+   ```shell
+   cd utils
+   poetry run build.py
+   ```
+
+3. Create a release on GitHub, upload the plugin package file
+4. Bump version

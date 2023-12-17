@@ -40,6 +40,7 @@ LrTasks.startAsyncTask(function()
                     return {}
                 end
             end
+            progressReporter:forceReportProgress()
 
             local msg = "Built all smart previews"
             Logger.info(msg)
