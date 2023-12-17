@@ -13,7 +13,7 @@ def extract_version(plugin_dir: str) -> str:
     """
 
     lua_code = """
-    -- Placeholder for a Lightroom SDK function
+    -- Placeholder for a Lightroom SDK function.
     function LOC(param)
       return param
     end

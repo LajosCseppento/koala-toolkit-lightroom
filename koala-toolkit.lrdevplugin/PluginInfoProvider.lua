@@ -7,7 +7,7 @@ return {
                 title = LOC "$$$/KoalaToolkit/PluginManager=About",
                 f:row {
                     f:static_text {
-                        title = LOC "$$$/KoalaToolkit/Title1=Collection of tools such as smart import.",
+                        title = LOC "$$$/KoalaToolkit/Title1=Lightroom Classic utilities to better manage (not only koala) photos.",
                         fill_horizontal = 1,
                     },
                 },
@@ -15,7 +15,7 @@ return {
                     spacing = f:control_spacing(),
                     f:push_button {
                         width = 100,
-                        title = LOC "$$$/KoalaToolkit/ButtonTitle=More info...",
+                        title = LOC "$$$/KoalaToolkit/ButtonTitle=More Info...",
                         enabled = true,
                         action = function()
                             LrHttp.openUrlInBrowser("https://github.com/LajosCseppento/koala-toolkit-lightroom")
@@ -23,7 +23,7 @@ return {
                     },
                     f:push_button {
                         width = 120,
-                        title = LOC "$$$/KoalaToolkit/ButtonTitle=Report an issue...",
+                        title = LOC "$$$/KoalaToolkit/ButtonTitle=Report an Issue...",
                         enabled = true,
                         action = function()
                             LrHttp.openUrlInBrowser("https://github.com/LajosCseppento/koala-toolkit-lightroom/issues")

@@ -92,7 +92,7 @@ function Logger.fatal(...)
 end
 
 function Logger.fatalf(format, ...)
-    Logger.delegate:fatal(format, ...)
+    Logger.delegate:fatalf(format, ...)
 end
 
 return Logger

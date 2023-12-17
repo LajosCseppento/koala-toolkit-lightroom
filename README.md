@@ -1,6 +1,6 @@
 # Koala Toolkit for Lightroom Classic
 
-Lightroom Classic utilities to manage better (not only) koala photos.
+Lightroom Classic utilities to better manage (not only koala) photos.
 
 ![Koala Toolkit for Lightroom Classic](koala-toolkit.png)
 
@@ -55,6 +55,8 @@ poetry run test_photo_generator.py
 For debugging I used [WinDbg](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/).
 
 For testing the plugin in early stages I used `utils/test_photo_generator` to create some photos and import them in an empty catalog. For QA I used a personal library of ~50K assets.
+
+The [Lightroom Plugin Utils](https://marketplace.visualstudio.com/items?itemName=jusonex.lightroom-plugin-utils) VS Code extension is also very useful to quickly reload the plugin during development.
 
 ### Testing
 
