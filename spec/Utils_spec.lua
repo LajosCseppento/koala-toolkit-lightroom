@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field, undefined-global
 package.path = "koala-toolkit.lrdevplugin/?.lua;" .. package.path
 Utils = require("Utils")
 

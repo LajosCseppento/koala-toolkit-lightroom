@@ -3,10 +3,18 @@
 --------------------------------------------------------------------------------
 
 local Logger = {}
-Logger.traceEnabled = false -- true or false (true is useful for troubleshooting, but it can slow down the plugin)
-Logger.debugEnabled = true  -- true or false (true is useful for troubleshooting, but it can slow down the plugin)
-Logger.infoEnabled = true   -- true or false
-Logger.target = "print"     -- nil, "print" or "logfile"
+
+-- true or false (true is useful for troubleshooting, but it can slow down the plugin)
+Logger.traceEnabled = false
+
+-- true or false (true is useful for troubleshooting, but it can slow down the plugin)
+Logger.debugEnabled = true
+
+-- true or false
+Logger.infoEnabled = true
+
+-- Where to write the log messages, can be nil, "print" or "logfile"
+Logger.target = "print"
 
 --------------------------------------------------------------------------------
 -- Do not change below ---------------------------------------------------------

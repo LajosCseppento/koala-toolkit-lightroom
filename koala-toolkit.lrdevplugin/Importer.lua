@@ -268,12 +268,13 @@ end
 -- @tparam LrProgressScope lrProgressScope progress scope
 local function smartImport(lrCatalog, lrProgressScope)
     -- Determine what to import
+    Logger.info("Running Smart Import...")
     local pathsToImport = scanFolders(lrCatalog, lrProgressScope)
 
     if lrProgressScope:isCanceled() then
         local msg = "Operation cancelled, no files were imported"
         Logger.info(msg)
-        LrDialogs.message("Smart Import", msg, "info");
+        LrDialogs.message("Koala Toolkit", msg, "info");
         return
     end
 
@@ -282,7 +283,7 @@ local function smartImport(lrCatalog, lrProgressScope)
     if pathsToImportCount == 0 then
         local msg = "No files to import"
         Logger.info(msg)
-        LrDialogs.message("Smart Import", msg, "info");
+        LrDialogs.message("Koala Toolkit", msg, "info");
         return
     end
 
@@ -331,7 +332,7 @@ local function smartImport(lrCatalog, lrProgressScope)
         if lrProgressScope:isCanceled() then
             local msg = string.format("Operation canceled (%d/%d)", i, pathsToImportCount)
             Logger.infof(msg)
-            LrDialogs.message("Smart Import", msg, "info");
+            LrDialogs.message("Koala Toolkit", msg, "info");
             return
         end
     end
@@ -339,11 +340,12 @@ local function smartImport(lrCatalog, lrProgressScope)
     if not lrProgressScope:isCanceled() then
         local msg = string.format("Imported %d files", successCount)
         if failedCount > 0 then
-            msg = msg .. string.format("  (could not import %d unsupported files)", failedCount)
+            -- Reason might be unsupported format, deleted in the meantime, etc.
+            msg = msg .. string.format("  (could not import %d files)", failedCount)
         end
 
         Logger.info(msg)
-        LrDialogs.message("Smart Import", msg, "info");
+        LrDialogs.message("Koala Toolkit", msg, "info");
     end
 
     lrCatalog:setActiveSources({ lrImportCollection })
