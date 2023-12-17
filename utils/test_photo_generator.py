@@ -1,9 +1,19 @@
+"""Test photo generator"""
 import os
 import shutil
+
 from PIL import Image, ImageColor
 
 
 def generate_photo(target_dir: str, width: int, height: int, color: str):
+    """Generates a test photo (both JPEG and display JPEG).
+
+    Args:
+        target_dir (str): Target directory
+        width (int): Width
+        height (int): Height
+        color (str): Color (known to PIL, e.g. "red")
+    """
     image = Image.new("RGB", (width, height), color)
 
     os.makedirs(target_dir, exist_ok=True)
@@ -16,7 +26,8 @@ def generate_photo(target_dir: str, width: int, height: int, color: str):
     )
 
 
-def main():
+def generate_test_photos():
+    """Generates test photos."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     photos_dir = os.path.abspath(os.path.join(script_dir, "..", "TestPhotos"))
 
@@ -48,4 +59,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    generate_test_photos()

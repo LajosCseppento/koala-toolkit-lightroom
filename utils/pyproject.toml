@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "test-photo-generator"
+name = "utils"
 version = "0.0.0"
-description = "Test Photo Generator"
+description = "Koala Toolkit for Lightroom Classic utilities"
 authors = ["Lajos Cseppentő <1053931+LajosCseppento@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
