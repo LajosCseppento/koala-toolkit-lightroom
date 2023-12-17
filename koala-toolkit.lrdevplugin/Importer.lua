@@ -102,11 +102,11 @@ local function collectImportableFilePaths(baseFilePathsToExtensions, folderPath,
     local importablePaths = {}
 
     for baseFilePath, extensions in pairs(baseFilePathsToExtensions) do
-        -- Keep copy to avoid changing the original table
+        -- Keep copy to avoid changing the original table.
         local importableExtensionsSet = {}
         local hasRaw = false
-        -- It can have .jpg and .jpeg too
-        -- Plus, it is case sensitive, so simply removing .jpg and .jpeg would not work
+        -- It can have .jpg and .jpeg too.
+        -- Plus, it is case sensitive, so simply removing .jpg and .jpeg would not work.
         local jpegExtensionsArray = {}
         for extension, _ in pairs(extensions) do
             Logger.tracef("[Importer/collectImportablePaths] Checking %s.%s", baseFilePath, extension)
@@ -181,12 +181,12 @@ local function collectPathsToImport(importablePaths, lrCatalog, lrProgressScope)
         return {}
     end
 
-    -- Fetch photos with paths
+    -- Fetch photos with paths.
     Logger.infof("Analyising catalog ...")
     lrProgressScope:setCaption("Analysing catalog ...")
     LrTasks.yield()
 
-    local allPhotos = lrCatalog:getAllPhotos() -- This is relatively fast
+    local allPhotos = lrCatalog:getAllPhotos() -- This is relatively fast.
     local total = #allPhotos
     local progressReporter = ProgressReporter:new(lrProgressScope, function(progress)
         return string.format(
@@ -206,7 +206,7 @@ local function collectPathsToImport(importablePaths, lrCatalog, lrProgressScope)
     end
     progressReporter:forceReportProgress()
 
-    -- Match against importable paths
+    -- Match against importable paths.
     local pathsToImport = {}
 
     for _, path in ipairs(importablePaths) do
@@ -270,7 +270,7 @@ end
 -- @tparam LrCatalog lrCatalog catalog
 -- @tparam LrProgressScope lrProgressScope progress scope
 local function smartImport(lrCatalog, lrProgressScope)
-    -- Determine what to import
+    -- Determine what to import.
     Logger.info("Running Smart Import...")
     local pathsToImport = scanFolders(lrCatalog, lrProgressScope)
 
@@ -290,6 +290,7 @@ local function smartImport(lrCatalog, lrProgressScope)
         return
     end
 
+    -- Import files.
     Logger.infof("Importing %d files", pathsToImport)
     lrProgressScope:setCaption("Importing...")
     LrTasks.yield()
@@ -306,8 +307,8 @@ local function smartImport(lrCatalog, lrProgressScope)
         Logger.infof("Importing %s (%d/%d)", path, i, pathsToImportCount)
         lrProgressScope:setCaption("Importing " .. truncatePath(path, 40))
 
-        -- This is slow and did not find a way to parallelize it
-        -- Even if wrapped as async task, LRC imports one by one
+        -- This is slow and did not find a way to parallelize it.
+        -- Even if wrapped as async task, LRC imports files one by one.
         local success, lrPhoto = LrTasks.pcall(function()
             return lrCatalog:addPhoto(path)
         end)
@@ -315,11 +316,11 @@ local function smartImport(lrCatalog, lrProgressScope)
         if success then
             successCount = successCount + 1
 
-            -- Always add immediately in case the user cancels later
+            -- Always add immediately in case the user cancels later.
             lrImportCollection:addPhotos({ lrPhoto })
 
             if Importer.buildSmartPreviews then
-                -- This can already go in parallel
+                -- This can already go in parallel.
                 LrTasks.startAsyncTask(function()
                     Logger.infof("Triggering smart preview build for %s", path)
                     lrCatalog:buildSmartPreviews({ lrPhoto })
@@ -359,7 +360,7 @@ function Importer.run()
     LrTasks.startAsyncTask(function()
         local lrCatalog = LrApplication.activeCatalog()
 
-        -- Ask for access early when the user triggers the action in case file system scanning takes a long time
+        -- Ask for access early when the user triggers the action in case file system scanning takes a long time.
         Logger.info("Requesting prolonged write access")
         lrCatalog:withProlongedWriteAccessDo({
             title = "Smart Import",
@@ -368,7 +369,7 @@ function Importer.run()
             optionalMessage = "If you proceed, the plugin will re-import all photos from all folders in your catalog.",
             func = function(_, lrProgressScope)
                 lrProgressScope:setIndeterminate()
-                LrTasks.yield() -- Allow the progress dialog to show up
+                LrTasks.yield() -- Allow the progress dialog to show up.
                 smartImport(lrCatalog, lrProgressScope)
             end,
         })

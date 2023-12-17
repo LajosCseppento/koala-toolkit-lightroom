@@ -8,7 +8,7 @@ local Logger = require("Logger")
 LrTasks.startAsyncTask(function()
     local lrCatalog = LrApplication.activeCatalog()
 
-    -- Ask for access early when the user triggers the action in case file system scanning takes a long time
+    -- Ask for access early when the user triggers the action in case file system scanning takes a long time.
     Logger.info("Requesting prolonged write access")
     lrCatalog:withProlongedWriteAccessDo({
         title = "Build All Smart Previews",
@@ -17,7 +17,7 @@ LrTasks.startAsyncTask(function()
         optionalMessage = "If you proceed, the plugin build smart previews for all photos.",
         func = function(_, lrProgressScope)
             lrProgressScope:setIndeterminate()
-            LrTasks.yield() -- Allow the progress dialog to show up
+            LrTasks.yield() -- Allow the progress dialog to show up.
 
             Logger.info("Building all smart previews")
 
@@ -31,6 +31,7 @@ LrTasks.startAsyncTask(function()
             end)
 
             for _, lrPhoto in ipairs(allPhotos) do
+                -- Works without the check, but it is faster if it is called conditionally.
                 if not lrPhoto:getRawMetadata("smartPreviewInfo") then
                     lrPhoto:buildSmartPreview()
                 end
